@@ -16,11 +16,9 @@ type MicroVisionCGIServer struct {
 
 	cameraConnection *grpc.ClientConn
 	cameraChannel    mvcam.MicroVisionCameraServiceClient
-	cameraOpened     bool
 
 	controllerConnection *grpc.ClientConn
 	controllerChannel    mvcamctrl.MicroVisionCameraControlServiceClient
-	controllerOpened     bool
 }
 
 func (s *MicroVisionCGIServer) ConnectDevices(ctx context.Context, req *mvcgi.ConnectDevicesRequest) (resp *mvcgi.ConnectDevicesResponse, err error) {
@@ -30,16 +28,6 @@ func (s *MicroVisionCGIServer) ConnectDevices(ctx context.Context, req *mvcgi.Co
 		return
 	}
 	resp = &mvcgi.ConnectDevicesResponse{}
-	if s.cameraOpened {
-		resp.CameraConnectionStatus = mvcgi.ConnectionStatus_CONNECTED
-	} else {
-		resp.CameraConnectionStatus = mvcgi.ConnectionStatus_DISCONNECTED
-	}
-	if s.controllerOpened {
-		resp.ControllerConnectionStatus = mvcgi.ConnectionStatus_CONNECTED
-	} else {
-		resp.ControllerConnectionStatus = mvcgi.ConnectionStatus_DISCONNECTED
-	}
 	return
 }
 
