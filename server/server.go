@@ -2,7 +2,7 @@ package server
 
 import (
 	"github.com/improbable-eng/grpc-web/go/grpcweb"
-	"github.com/wuyuanyi135/MicroVisionCGI/server/devicediscovery"
+	"github.com/wuyuanyi135/MicroVisionCGI/server/devcon"
 	"github.com/wuyuanyi135/MicroVisionCGI/server/devicepair"
 	"github.com/wuyuanyi135/mvprotos/mvcam"
 	"github.com/wuyuanyi135/mvprotos/mvcamctrl"
@@ -25,8 +25,8 @@ func BuildServer() *grpcweb.WrappedGrpcServer {
 
 	devicePairService := devicepair.NewDeviceServiceImpl()
 	mvcgi.RegisterDevicePairServiceServer(grpcServer, devicePairService)
-	deviceDiscoveryService := devicediscovery.NewDeviceDiscoveryServiceImpl(cameraServer, controllerServer)
-	mvcgi.RegisterDeviceDiscoveryServiceServer(grpcServer, deviceDiscoveryService)
+	deviceDiscoveryService := devcon.NewDeviceConnectionServiceImpl(cameraServer, controllerServer)
+	mvcgi.RegisterDeviceConnectionServiceServer(grpcServer, deviceDiscoveryService)
 	wrappedGrpc := grpcweb.WrapServer(grpcServer)
 
 	return wrappedGrpc

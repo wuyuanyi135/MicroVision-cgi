@@ -1,4 +1,4 @@
-package devicediscovery
+package devcon
 
 import (
 	"context"
@@ -9,24 +9,7 @@ import (
 	"sync"
 )
 
-type DeviceDiscoveryServiceImpl struct {
-	cameraServer     mvcam.MicroVisionCameraServiceClient
-	controllerServer mvcamctrl.MicroVisionCameraControlServiceClient
-}
-
-// make sure the client passed in are already connected to the server.
-func NewDeviceDiscoveryServiceImpl(
-	cameraServer mvcam.MicroVisionCameraServiceClient,
-	controllerServer mvcamctrl.MicroVisionCameraControlServiceClient,
-) *DeviceDiscoveryServiceImpl {
-
-	return &DeviceDiscoveryServiceImpl{
-		cameraServer:     cameraServer,
-		controllerServer: controllerServer,
-	}
-}
-
-func (s *DeviceDiscoveryServiceImpl) DiscoveryDevices(ctx context.Context, req *mvcgi.DiscoveryDevicesRequest) (resp *mvcgi.DiscoveryDevicesResponse, err error) {
+func (s *DeviceConnectionServiceImpl) DiscoveryDevices(ctx context.Context, req *mvcgi.DiscoveryDevicesRequest) (resp *mvcgi.DiscoveryDevicesResponse, err error) {
 	resp = &mvcgi.DiscoveryDevicesResponse{}
 	wg := sync.WaitGroup{}
 	if req.DiscoverCamera {

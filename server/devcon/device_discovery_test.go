@@ -1,13 +1,13 @@
-package devicediscovery_test
+package devcon_test
 
 import (
 	"context"
 	"fmt"
+	"github.com/wuyuanyi135/MicroVisionCGI/server/devcon"
 	"net"
 	"testing"
 
 	"github.com/wuyuanyi135/MicroVisionCGI/server"
-	"github.com/wuyuanyi135/MicroVisionCGI/server/devicediscovery"
 	"github.com/wuyuanyi135/mvprotos/mvcam"
 	"github.com/wuyuanyi135/mvprotos/mvcamctrl"
 	"github.com/wuyuanyi135/mvprotos/mvcgi"
@@ -16,7 +16,7 @@ import (
 
 const Port = 30501
 
-var client mvcgi.DeviceDiscoveryServiceClient
+var client mvcgi.DeviceConnectionServiceClient
 
 func TestMain(m *testing.M) {
 	go StartTestServer()
@@ -25,7 +25,7 @@ func TestMain(m *testing.M) {
 		panic(err)
 	}
 
-	client = mvcgi.NewDeviceDiscoveryServiceClient(conn)
+	client = mvcgi.NewDeviceConnectionServiceClient(conn)
 
 	m.Run()
 }
@@ -38,8 +38,8 @@ func StartTestServer() {
 	cameraServer := mvcam.NewMicroVisionCameraServiceClient(cameraServerConn)
 	controllerServer := mvcamctrl.NewMicroVisionCameraControlServiceClient(controllerServerConn)
 
-	deviceDiscoveryService := devicediscovery.NewDeviceDiscoveryServiceImpl(cameraServer, controllerServer)
-	mvcgi.RegisterDeviceDiscoveryServiceServer(grpcServer, deviceDiscoveryService)
+	deviceConnectionService := devcon.NewDeviceConnectionServiceImpl(cameraServer, controllerServer)
+	mvcgi.RegisterDeviceConnectionServiceServer(grpcServer, deviceConnectionService)
 	address := fmt.Sprintf("0.0.0.0:%d", Port)
 	listener, err := net.Listen("tcp", address)
 	if err != nil {

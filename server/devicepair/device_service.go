@@ -109,13 +109,23 @@ func (s *DeviceServiceImpl) Update(ctx context.Context, req *mvcgi.UpdateDeviceP
 	err = s.db.Update(func(tx *bolt.Tx) (err error) {
 		b := tx.Bucket([]byte(DevicePairBucket))
 		key := itob(dev)
-		if b.Get(key) == nil {
+		storedValue := b.Get(key)
+		if storedValue == nil {
 			// not exist
 			err = errors.New("the device is not found")
 			return
 		}
-		req.NewValue.Id = dev
-		marshal, err := proto.Marshal(req.NewValue)
+
+		var oldValue mvcgi.DevicePair
+		err = proto.Unmarshal(storedValue, &oldValue)
+		if err != nil {
+			return
+		}
+
+		oldValue.Controller = req.NewValue.Controller
+		oldValue.Camera = req.NewValue.Camera
+
+		marshal, err := proto.Marshal(&oldValue)
 		if err != nil {
 			return
 		}
