@@ -2,14 +2,15 @@ package devcon
 
 import (
 	"context"
-	"errors"
 	"github.com/golang/protobuf/ptypes/empty"
+	"github.com/hashicorp/go-multierror"
 	"github.com/wuyuanyi135/mvprotos/mvcam"
 	"github.com/wuyuanyi135/mvprotos/mvcamctrl"
 	"github.com/wuyuanyi135/mvprotos/mvcgi"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
+	"sync"
 )
 
 type DeviceConnectionServiceImpl struct {
@@ -29,61 +30,79 @@ func NewDeviceConnectionServiceImpl(
 }
 
 func (s *DeviceConnectionServiceImpl) Connect(ctx context.Context, req *mvcgi.ConnectionRequest) (resp *empty.Empty, err error) {
-	switch req.Device.(type) {
-	case *mvcgi.ConnectionRequest_CameraId:
-		_, err = s.cameraServer.OpenCamera(ctx, &mvcam.IdRequest{Id: req.GetCameraId()}, grpc.WaitForReady(true))
-		if err != nil {
-			return
-		}
-		break
-	case *mvcgi.ConnectionRequest_ControllerId:
-		_, err = s.controllerServer.Connect(
-			ctx,
-			&mvcamctrl.ConnectRequest{
-				DeviceIdentifier: &mvcamctrl.ConnectRequest_Path{
-					Path: req.GetControllerId(),
+	wg := sync.WaitGroup{}
+	e := &multierror.Error{}
+	if req.CameraId != "" {
+		wg.Add(1)
+		go func() {
+			_, err := s.cameraServer.OpenCamera(ctx, &mvcam.IdRequest{Id: req.CameraId}, grpc.WaitForReady(true))
+			if err != nil {
+				e = multierror.Append(e, err)
+			}
+			wg.Done()
+		}()
+	}
+	if req.ControllerId != "" {
+		wg.Add(1)
+		go func() {
+			_, err = s.controllerServer.Connect(
+				ctx,
+				&mvcamctrl.ConnectRequest{
+					DeviceIdentifier: &mvcamctrl.ConnectRequest_Path{
+						Path: req.GetControllerId(),
+					},
 				},
-			},
-			grpc.WaitForReady(true),
-		)
+				grpc.WaitForReady(true),
+			)
+			if err != nil {
+				e = multierror.Append(e, err)
+			}
+			wg.Done()
+		}()
+	}
 
-		if err != nil {
-			return
-		}
-		break
-	default:
-		err = errors.New("unknown device information provided")
-		break
+	wg.Wait()
+	if e != nil {
+		err = e
 	}
 	return
 }
 
 func (s *DeviceConnectionServiceImpl) Disconnect(ctx context.Context, req *mvcgi.ConnectionRequest) (resp *empty.Empty, err error) {
-	switch req.Device.(type) {
-	case *mvcgi.ConnectionRequest_CameraId:
-		_, err = s.cameraServer.ShutdownCamera(ctx, &mvcam.IdRequest{Id: req.GetCameraId()}, grpc.WaitForReady(true))
-		if err != nil {
-			return
-		}
-		break
-	case *mvcgi.ConnectionRequest_ControllerId:
-		_, err = s.controllerServer.Disconnect(
-			ctx,
-			&mvcamctrl.ConnectRequest{
-				DeviceIdentifier: &mvcamctrl.ConnectRequest_Path{
-					Path: req.GetControllerId(),
+	wg := sync.WaitGroup{}
+	e := &multierror.Error{}
+	if req.CameraId != "" {
+		wg.Add(1)
+		go func() {
+			_, err := s.cameraServer.ShutdownCamera(ctx, &mvcam.IdRequest{Id: req.CameraId}, grpc.WaitForReady(true))
+			if err != nil {
+				e = multierror.Append(e, err)
+			}
+			wg.Done()
+		}()
+	}
+	if req.ControllerId != "" {
+		wg.Add(1)
+		go func() {
+			_, err = s.controllerServer.Disconnect(
+				ctx,
+				&mvcamctrl.ConnectRequest{
+					DeviceIdentifier: &mvcamctrl.ConnectRequest_Path{
+						Path: req.GetControllerId(),
+					},
 				},
-			},
-			grpc.WaitForReady(true),
-		)
+				grpc.WaitForReady(true),
+			)
+			if err != nil {
+				e = multierror.Append(e, err)
+			}
+			wg.Done()
+		}()
+	}
 
-		if err != nil {
-			return
-		}
-		break
-	default:
-		err = errors.New("unknown device information provided")
-		break
+	wg.Wait()
+	if e != nil {
+		err = e
 	}
 	return
 }
