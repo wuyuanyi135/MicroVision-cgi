@@ -47,9 +47,9 @@ func StartTestServer() {
 func TestDeviceServiceImpl_Create(t *testing.T) {
 	_, err := client.Create(context.Background(), &mvcgi.CreateDevicePairRequest{
 		Device: &mvcgi.DevicePair{
-			CameraId:     "test_camera_id",
-			ControllerId: "test_controller_id",
-			CreatedAt:    ptypes.TimestampNow(),
+			Camera:     &mvcgi.DevicePair_Device{DisplayName: "camdisplayname", Id: "camid"},
+			Controller: &mvcgi.DevicePair_Device{DisplayName: "ctrldisplayname", Id: "ctrlid"},
+			CreatedAt:  ptypes.TimestampNow(),
 		},
 	}, grpc.WaitForReady(true))
 
@@ -68,7 +68,7 @@ func TestDeviceServiceImpl_List(t *testing.T) {
 	}
 
 	for key, value := range response.Devices {
-		t.Logf("%d: camera: %s; controller: %s; created at: %s", key, value.CameraId, value.ControllerId, value.CreatedAt.String())
+		t.Logf("%d: camera: %v; controller: %v; created at: %s", key, value.Camera, value.Controller, value.CreatedAt.String())
 	}
 }
 func TestDeviceServiceImpl_Update(t *testing.T) {
@@ -86,8 +86,8 @@ func TestDeviceServiceImpl_Update(t *testing.T) {
 
 	// update with id
 	pair := response.Devices[0]
-	pair.ControllerId = "updated_controller_id"
-	pair.CameraId = "updated_camera_id"
+	pair.Controller.Id = "updated_controller_id"
+	pair.Controller.Id = "updated_camera_id"
 	_, err = client.Update(
 		context.Background(),
 		&mvcgi.UpdateDevicePairRequest{
@@ -101,13 +101,13 @@ func TestDeviceServiceImpl_Update(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	if response.Devices[0].ControllerId != pair.ControllerId || response.Devices[0].CameraId != pair.CameraId {
+	if response.Devices[0].Controller.Id != pair.Controller.Id || response.Devices[0].Camera.Id != pair.Camera.Id {
 		t.Error("Update failed.")
 	}
 
 	// update with item
-	pair.ControllerId = "updated_controller_id_item"
-	pair.CameraId = "updated_camera_id_item"
+	pair.Controller.Id = "updated_controller_id_item"
+	pair.Camera.Id = "updated_camera_id_item"
 	_, err = client.Update(
 		context.Background(),
 		&mvcgi.UpdateDevicePairRequest{
@@ -121,7 +121,7 @@ func TestDeviceServiceImpl_Update(t *testing.T) {
 	if err != nil {
 		t.Error(err)
 	}
-	if response.Devices[0].ControllerId != pair.ControllerId || response.Devices[0].CameraId != pair.CameraId {
+	if response.Devices[0].Controller.Id != pair.Controller.Id || response.Devices[0].Camera.Id != pair.Camera.Id {
 		t.Error("Update failed.")
 	}
 }
