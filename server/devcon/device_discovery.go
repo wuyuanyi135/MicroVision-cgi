@@ -11,6 +11,12 @@ import (
 
 func (s *DeviceConnectionServiceImpl) DiscoveryDevices(ctx context.Context, req *mvcgi.DiscoveryDevicesRequest) (resp *mvcgi.DiscoveryDevicesResponse, err error) {
 	resp = &mvcgi.DiscoveryDevicesResponse{}
+
+	if req.UseCache {
+		resp = &s.cache
+		return
+	}
+
 	wg := sync.WaitGroup{}
 	if req.DiscoverCamera {
 		wg.Add(1)
@@ -46,5 +52,6 @@ func (s *DeviceConnectionServiceImpl) DiscoveryDevices(ctx context.Context, req 
 		}()
 	}
 	wg.Wait()
+	s.cache = *resp
 	return
 }

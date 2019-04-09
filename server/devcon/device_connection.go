@@ -16,6 +16,7 @@ import (
 type DeviceConnectionServiceImpl struct {
 	cameraServer     mvcam.MicroVisionCameraServiceClient
 	controllerServer mvcamctrl.MicroVisionCameraControlServiceClient
+	cache            mvcgi.DiscoveryDevicesResponse
 }
 
 func NewDeviceConnectionServiceImpl(
@@ -39,6 +40,12 @@ func (s *DeviceConnectionServiceImpl) Connect(ctx context.Context, req *mvcgi.Co
 			if err != nil {
 				e = multierror.Append(e, err)
 			}
+			// update cache
+			for k, v := range s.cache.DiscoveredCamera {
+				if v.Id == req.CameraId {
+					s.cache.DiscoveredCamera[k].Connected = true
+				}
+			}
 			wg.Done()
 		}()
 	}
@@ -56,6 +63,13 @@ func (s *DeviceConnectionServiceImpl) Connect(ctx context.Context, req *mvcgi.Co
 			)
 			if err != nil {
 				e = multierror.Append(e, err)
+			}
+
+			// update cache
+			for k, v := range s.cache.DiscoveredController {
+				if v.Id == req.ControllerId {
+					s.cache.DiscoveredController[k].Connected = true
+				}
 			}
 			wg.Done()
 		}()
@@ -78,6 +92,12 @@ func (s *DeviceConnectionServiceImpl) Disconnect(ctx context.Context, req *mvcgi
 			if err != nil {
 				e = multierror.Append(e, err)
 			}
+			// update cache
+			for k, v := range s.cache.DiscoveredCamera {
+				if v.Id == req.CameraId {
+					s.cache.DiscoveredCamera[k].Connected = false
+				}
+			}
 			wg.Done()
 		}()
 	}
@@ -95,6 +115,12 @@ func (s *DeviceConnectionServiceImpl) Disconnect(ctx context.Context, req *mvcgi
 			)
 			if err != nil {
 				e = multierror.Append(e, err)
+			}
+			// update cache
+			for k, v := range s.cache.DiscoveredController {
+				if v.Id == req.ControllerId {
+					s.cache.DiscoveredController[k].Connected = false
+				}
 			}
 			wg.Done()
 		}()
