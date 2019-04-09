@@ -2,17 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="48579100-4aaa-4cdb-b1fe-7a10d1c4aaff" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/server/backend_server_interface.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/backend_server_interface_grpc_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/control_device_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/control_devices.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/list_devices_test.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/util_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/proto/MicroVision-proto/mvcgi/device_discovery_service.proto" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/backend_connection.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/devicediscovery/device_discovery.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/server/devicepair/device_service.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/proto/MicroVision-proto" beforeDir="false" afterPath="$PROJECT_DIR$/proto/MicroVision-proto" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/cgi_impl.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/cgi_impl.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/connect_devices.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/guard.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/guard.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/list_devices.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/list_devices.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/server/server.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -30,22 +27,64 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/list_devices_test.go">
+        <entry file="file://$PROJECT_DIR$/server/devicediscovery/device_discovery.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="16" selection-end-column="5" />
+            <state relative-caret-position="68">
+              <caret line="28" column="51" lean-forward="true" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
+              <folding>
+                <element signature="e#34#96#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/server/control_device_test.go">
+        <entry file="file://$PROJECT_DIR$/server/devicediscovery/device_discovery_test.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="19" lean-forward="true" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
+            <state relative-caret-position="475">
+              <caret line="64" column="28" selection-start-line="64" selection-start-column="28" selection-end-line="64" selection-end-column="28" />
               <folding>
-                <element signature="e#16#78#0" expanded="true" />
+                <element signature="e#30#353#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/server.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="17" selection-start-line="17" selection-end-line="27" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="25" selection-start-line="25" selection-end-line="25" />
+              <folding>
+                <element signature="e#14#275#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/proto/MicroVision-proto/mvcamctrl/camera_controller_definitions.proto">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="185">
+              <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -75,12 +114,15 @@
       <find>defer</find>
       <find>connected</find>
       <find>connect</find>
+      <find>date</find>
+      <find>time</find>
+      <find>main</find>
     </findStrings>
     <replaceStrings>
       <replace>ctx context.Context</replace>
     </replaceStrings>
   </component>
-  <component name="GOROOT" path="/usr/lib/go-1.11" />
+  <component name="GOROOT" path="/usr/lib/go-1.12" />
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="DONT_SYNC" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -89,9 +131,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/proto/definitions.proto" />
-        <option value="$PROJECT_DIR$/proto/service.proto" />
-        <option value="$PROJECT_DIR$/app/src/app/dashboard/camera-controller.service.ts" />
         <option value="$PROJECT_DIR$/proto/MicroVision-proto/cgi/service.proto" />
         <option value="$PROJECT_DIR$/server/middleware/grpc_chi_middleware.go" />
         <option value="$PROJECT_DIR$/Gopkg.toml" />
@@ -107,13 +146,10 @@
         <option value="$PROJECT_DIR$/protoc.sh" />
         <option value="$PROJECT_DIR$/proto/MicroVision-proto/mvcamctrl/laser_control_definitions.proto" />
         <option value="$PROJECT_DIR$/proto/MicroVision-proto/mvcamctrl/laser_control_service.proto" />
-        <option value="$PROJECT_DIR$/server/server.go" />
         <option value="$PROJECT_DIR$/server/cgi_private.go" />
         <option value="$PROJECT_DIR$/server/middleware/connect_devices_impl.go" />
         <option value="$PROJECT_DIR$/server/connect_devices_impl.go" />
         <option value="$PROJECT_DIR$/server/connect_devices.go" />
-        <option value="$PROJECT_DIR$/proto/MicroVision-proto/mvcgi/cgi_service.proto" />
-        <option value="$PROJECT_DIR$/proto/MicroVision-proto/mvcgi/cgi_definitions.proto" />
         <option value="$PROJECT_DIR$/main.go" />
         <option value="$PROJECT_DIR$/server/test_backend_server_interface.go" />
         <option value="$PROJECT_DIR$/test/test_backend_server_interface.go" />
@@ -132,14 +168,28 @@
         <option value="$PROJECT_DIR$/server/control_devices.go" />
         <option value="$PROJECT_DIR$/proto/MicroVision-proto/mvcamctrl/camera_controller_service.proto" />
         <option value="$PROJECT_DIR$/server/control_device_test.go" />
+        <option value="$PROJECT_DIR$/proto/MicroVision-proto/mvcgi/cgi_service.proto" />
+        <option value="$PROJECT_DIR$/proto/MicroVision-proto/mvcgi/cgi_definitions.proto" />
+        <option value="$PROJECT_DIR$/proto/MicroVision-proto/mvcgi/device_service.proto" />
+        <option value="$PROJECT_DIR$/server/device_service.go" />
+        <option value="$PROJECT_DIR$/server/device_service_test.go" />
+        <option value="$PROJECT_DIR$/server/device_service/device_service_test.go" />
+        <option value="$PROJECT_DIR$/server/device_service/device_service.go" />
+        <option value="$PROJECT_DIR$/proto/MicroVision-proto/mvcgi/device_pair_service.proto" />
+        <option value="$PROJECT_DIR$/proto/MicroVision-proto/mvcgi/device_discovery_service.proto" />
+        <option value="$PROJECT_DIR$/server/device_discovery_service/device_discovery.go" />
+        <option value="$PROJECT_DIR$/config.go" />
+        <option value="$PROJECT_DIR$/server/backend_connection.go" />
+        <option value="$PROJECT_DIR$/server/server.go" />
+        <option value="$PROJECT_DIR$/server/devicediscovery/device_discovery_test.go" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="993" />
+    <option name="x" value="282" />
     <option name="y" value="27" />
-    <option name="width" value="927" />
-    <option name="height" value="1053" />
+    <option name="width" value="1380" />
+    <option name="height" value="1014" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -147,7 +197,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -191,6 +240,18 @@
               <item name="MicroVisionCGI" type="b2602c69:ProjectViewProjectNode" />
               <item name="MicroVisionCGI" type="462c0819:PsiDirectoryNode" />
               <item name="server" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MicroVisionCGI" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MicroVisionCGI" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="devicediscovery" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MicroVisionCGI" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MicroVisionCGI" type="462c0819:PsiDirectoryNode" />
+              <item name="server" type="462c0819:PsiDirectoryNode" />
+              <item name="devicepair" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="MicroVisionCGI" type="b2602c69:ProjectViewProjectNode" />
@@ -245,14 +306,18 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="GO_FMT" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
     <property name="go.vendoring.notification.had.been.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../mvcamctrl" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -262,13 +327,14 @@
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/server" />
-      <recent name="$PROJECT_DIR$/test" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app" />
       <recent name="$PROJECT_DIR$/proto" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/server/device_service" />
+      <recent name="$PROJECT_DIR$/server" />
+      <recent name="$PROJECT_DIR$/test" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -283,114 +349,110 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Go Test.TestControlDoNothing in github.com/wuyuanyi135/MicroVisionCGI/server">
-    <configuration name="TestConnectWrongAddress in github.com/wuyuanyi135/MicroVisionCGI/server" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Go Test.go test github.com/wuyuanyi135/MicroVisionCGI/server/devicediscovery">
+    <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="MicroVisionCGI" />
-      <working_directory value="$PROJECT_DIR$/server" />
-      <framework value="gotest" />
-      <kind value="PACKAGE" />
-      <package value="github.com/wuyuanyi135/MicroVisionCGI/server" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/main.go" />
+      <package value="github.com/wuyuanyi135/MicroVisionCGI" />
       <directory value="$PROJECT_DIR$/" />
-      <filePath value="$PROJECT_DIR$/" />
-      <pattern value="^TestConnectWrongAddress$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestControlDoNothing in github.com/wuyuanyi135/MicroVisionCGI/server" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestDeviceServiceImpl_Create in github.com/wuyuanyi135/MicroVisionCGI/server/device_service" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="MicroVisionCGI" />
-      <working_directory value="$PROJECT_DIR$/server" />
+      <working_directory value="$PROJECT_DIR$/server/device_service" />
       <framework value="gotest" />
       <kind value="PACKAGE" />
-      <package value="github.com/wuyuanyi135/MicroVisionCGI/server" />
+      <package value="github.com/wuyuanyi135/MicroVisionCGI/server/device_service" />
       <directory value="$PROJECT_DIR$/" />
       <filePath value="$PROJECT_DIR$/" />
-      <pattern value="^TestControlDoNothing$" />
+      <pattern value="^TestDeviceServiceImpl_Create$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestListCamera in github.com/wuyuanyi135/MicroVisionCGI/server" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="TestDeviceServiceImpl_List in github.com/wuyuanyi135/MicroVisionCGI/server/device_service" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="MicroVisionCGI" />
-      <working_directory value="$PROJECT_DIR$/server" />
+      <working_directory value="$PROJECT_DIR$/server/device_service" />
       <framework value="gotest" />
       <kind value="PACKAGE" />
-      <package value="github.com/wuyuanyi135/MicroVisionCGI/server" />
+      <package value="github.com/wuyuanyi135/MicroVisionCGI/server/device_service" />
       <directory value="$PROJECT_DIR$/" />
       <filePath value="$PROJECT_DIR$/" />
-      <pattern value="^TestListCamera$" />
+      <pattern value="^TestDeviceServiceImpl_List$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestListController in github.com/wuyuanyi135/MicroVisionCGI/server" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="go test github.com/wuyuanyi135/MicroVisionCGI/server/device_service" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="MicroVisionCGI" />
-      <working_directory value="$PROJECT_DIR$/server" />
+      <working_directory value="$PROJECT_DIR$/server/device_service" />
       <framework value="gotest" />
       <kind value="PACKAGE" />
-      <package value="github.com/wuyuanyi135/MicroVisionCGI/server" />
+      <package value="github.com/wuyuanyi135/MicroVisionCGI/server/device_service" />
       <directory value="$PROJECT_DIR$/" />
       <filePath value="$PROJECT_DIR$/" />
-      <pattern value="^TestListController$" />
       <method v="2" />
     </configuration>
-    <configuration name="go test github.com/wuyuanyi135/MicroVisionCGI/server" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+    <configuration name="go test github.com/wuyuanyi135/MicroVisionCGI/server/devicediscovery" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="MicroVisionCGI" />
-      <working_directory value="$PROJECT_DIR$/server" />
+      <working_directory value="$PROJECT_DIR$/server/devicediscovery" />
       <framework value="gotest" />
       <kind value="PACKAGE" />
-      <package value="github.com/wuyuanyi135/MicroVisionCGI/server" />
+      <package value="github.com/wuyuanyi135/MicroVisionCGI/server/devicediscovery" />
       <directory value="$PROJECT_DIR$/" />
       <filePath value="$PROJECT_DIR$/" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Test.TestControlDoNothing in github.com/wuyuanyi135/MicroVisionCGI/server" />
-        <item itemvalue="Go Test.go test github.com/wuyuanyi135/MicroVisionCGI/server" />
-        <item itemvalue="Go Test.TestListCamera in github.com/wuyuanyi135/MicroVisionCGI/server" />
-        <item itemvalue="Go Test.TestListController in github.com/wuyuanyi135/MicroVisionCGI/server" />
-        <item itemvalue="Go Test.TestConnectWrongAddress in github.com/wuyuanyi135/MicroVisionCGI/server" />
+        <item itemvalue="Go Test.go test github.com/wuyuanyi135/MicroVisionCGI/server/devicediscovery" />
+        <item itemvalue="Go Build.go build main.go" />
+        <item itemvalue="Go Test.go test github.com/wuyuanyi135/MicroVisionCGI/server/device_service" />
+        <item itemvalue="Go Test.TestDeviceServiceImpl_List in github.com/wuyuanyi135/MicroVisionCGI/server/device_service" />
+        <item itemvalue="Go Test.TestDeviceServiceImpl_Create in github.com/wuyuanyi135/MicroVisionCGI/server/device_service" />
       </list>
     </recent_temporary>
   </component>
   <component name="TestHistory">
-    <history-entry file="go_test_github_com_wuyuanyi135_MicroVisionCGI_server - 2019.02.21 at 18h 57m 21s.xml">
-      <configuration name="go test github.com/wuyuanyi135/MicroVisionCGI/server" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestDeviceServiceImpl_Create_in_github_com_wuyuanyi135_MicroVisionCGI_server_device_service - 2019.04.08 at 15h 22m 12s.xml">
+      <configuration name="TestDeviceServiceImpl_Create in github.com/wuyuanyi135/MicroVisionCGI/server/device_service" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="go_test_github_com_wuyuanyi135_MicroVisionCGI_server - 2019.02.21 at 19h 01m 23s.xml">
-      <configuration name="go test github.com/wuyuanyi135/MicroVisionCGI/server" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestDeviceServiceImpl_Create_in_github_com_wuyuanyi135_MicroVisionCGI_server_device_service - 2019.04.08 at 15h 22m 29s.xml">
+      <configuration name="TestDeviceServiceImpl_Create in github.com/wuyuanyi135/MicroVisionCGI/server/device_service" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestListCamera_in_github_com_wuyuanyi135_MicroVisionCGI_server - 2019.02.21 at 19h 01m 49s.xml">
-      <configuration name="TestListCamera in github.com/wuyuanyi135/MicroVisionCGI/server" configurationId="GoTestRunConfiguration" />
+    <history-entry file="go_test_github_com_wuyuanyi135_MicroVisionCGI_server_device_service - 2019.04.08 at 15h 22m 36s.xml">
+      <configuration name="go test github.com/wuyuanyi135/MicroVisionCGI/server/device_service" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestListCamera_in_github_com_wuyuanyi135_MicroVisionCGI_server - 2019.02.21 at 19h 02m 30s.xml">
-      <configuration name="TestListCamera in github.com/wuyuanyi135/MicroVisionCGI/server" configurationId="GoTestRunConfiguration" />
+    <history-entry file="go_test_github_com_wuyuanyi135_MicroVisionCGI_server_device_service - 2019.04.08 at 15h 31m 19s.xml">
+      <configuration name="go test github.com/wuyuanyi135/MicroVisionCGI/server/device_service" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestListCamera_in_github_com_wuyuanyi135_MicroVisionCGI_server - 2019.02.21 at 19h 02m 39s.xml">
-      <configuration name="TestListCamera in github.com/wuyuanyi135/MicroVisionCGI/server" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestDeviceServiceImpl_List_in_github_com_wuyuanyi135_MicroVisionCGI_server_device_service - 2019.04.08 at 15h 31m 32s.xml">
+      <configuration name="TestDeviceServiceImpl_List in github.com/wuyuanyi135/MicroVisionCGI/server/device_service" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="go_test_github_com_wuyuanyi135_MicroVisionCGI_server - 2019.02.21 at 19h 03m 23s.xml">
-      <configuration name="go test github.com/wuyuanyi135/MicroVisionCGI/server" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestDeviceServiceImpl_List_in_github_com_wuyuanyi135_MicroVisionCGI_server_device_service - 2019.04.08 at 15h 32m 39s.xml">
+      <configuration name="TestDeviceServiceImpl_List in github.com/wuyuanyi135/MicroVisionCGI/server/device_service" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="go_test_github_com_wuyuanyi135_MicroVisionCGI_server - 2019.02.21 at 19h 04m 12s.xml">
-      <configuration name="go test github.com/wuyuanyi135/MicroVisionCGI/server" configurationId="GoTestRunConfiguration" />
+    <history-entry file="go_test_github_com_wuyuanyi135_MicroVisionCGI_server_device_service - 2019.04.08 at 15h 32m 47s.xml">
+      <configuration name="go test github.com/wuyuanyi135/MicroVisionCGI/server/device_service" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="go_test_github_com_wuyuanyi135_MicroVisionCGI_server - 2019.02.21 at 19h 22m 45s.xml">
-      <configuration name="go test github.com/wuyuanyi135/MicroVisionCGI/server" configurationId="GoTestRunConfiguration" />
+    <history-entry file="TestDeviceServiceImpl_List_in_github_com_wuyuanyi135_MicroVisionCGI_server_device_service - 2019.04.08 at 15h 32m 55s.xml">
+      <configuration name="TestDeviceServiceImpl_List in github.com/wuyuanyi135/MicroVisionCGI/server/device_service" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="go_test_github_com_wuyuanyi135_MicroVisionCGI_server - 2019.02.21 at 19h 25m 06s.xml">
-      <configuration name="go test github.com/wuyuanyi135/MicroVisionCGI/server" configurationId="GoTestRunConfiguration" />
+    <history-entry file="go_test_github_com_wuyuanyi135_MicroVisionCGI_server_device_service - 2019.04.08 at 15h 34m 55s.xml">
+      <configuration name="go test github.com/wuyuanyi135/MicroVisionCGI/server/device_service" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestControlDoNothing_in_github_com_wuyuanyi135_MicroVisionCGI_server - 2019.02.21 at 19h 25m 15s.xml">
-      <configuration name="TestControlDoNothing in github.com/wuyuanyi135/MicroVisionCGI/server" configurationId="GoTestRunConfiguration" />
+    <history-entry file="go_test_github_com_wuyuanyi135_MicroVisionCGI_server_device_service - 2019.04.08 at 17h 51m 31s.xml">
+      <configuration name="go test github.com/wuyuanyi135/MicroVisionCGI/server/device_service" configurationId="GoTestRunConfiguration" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="27" width="1853" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27006087" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2091865" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" weight="0.3293348" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3293348" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3293348" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3293348" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991276" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -401,11 +463,12 @@
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.3293348" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
-      <window_info anchor="right" id="Coverage" side_tool="true" weight="0.32982844" />
+      <window_info anchor="bottom" id="Messages" order="13" weight="0.3293348" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Database" order="3" />
+      <window_info anchor="right" id="Coverage" order="4" side_tool="true" weight="0.32982844" />
     </layout>
     <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26065302" />
@@ -442,7 +505,8 @@
     <MESSAGE value="CGI connect does not return status" />
     <MESSAGE value="update proto:&#10;change to new api for cgi&#10;add use cache" />
     <MESSAGE value="controller should be closed by id" />
-    <option name="LAST_COMMIT_MESSAGE" value="controller should be closed by id" />
+    <MESSAGE value="device pair service" />
+    <option name="LAST_COMMIT_MESSAGE" value="device pair service" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -460,63 +524,17 @@
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/server/backend_server_interface_grpc_test.go</url>
           <line>195</line>
-          <properties />
           <option name="timeStamp" value="54" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DlvLineBreakpoint">
           <url>file://$PROJECT_DIR$/server/list_devices.go</url>
           <line>28</line>
-          <properties />
           <option name="timeStamp" value="62" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../../rs/cors/cors.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="213" selection-start-line="213" selection-end-line="213" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../google.golang.org/grpc/internal/transport/handler_server.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="398" selection-start-line="398" selection-end-line="398" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../improbable-eng/grpc-web/go/grpcweb/wrapper.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="98" selection-start-line="98" selection-end-line="98" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/go-1.11/src/net/http/server.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="1964" selection-start-line="1964" selection-end-line="1964" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../gin-gonic/gin/gin.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="418" selection-start-line="418" selection-end-line="418" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/middleware/grpc_gin_middleware.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="9" selection-start-line="9" selection-end-line="20" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/proto/camera-backend/camera_service.pb.go" />
-    <entry file="file://$PROJECT_DIR$/server/proto/laser-controller/laser_control_service.pb.go" />
     <entry file="file://$PROJECT_DIR$/server/proto/cgi/cgi_service.pb.go" />
     <entry file="file://$PROJECT_DIR$/server/proto/cgi/cgi_definitions.pb.go" />
     <entry file="file://$PROJECT_DIR$/server/proto/laser-controller/error.pb.go" />
@@ -525,37 +543,9 @@
     <entry file="file://$PROJECT_DIR$/proto/server/proto/camera-backend/camera_service.pb.go" />
     <entry file="file://$PROJECT_DIR$/server/proto/camera-backend/camera_definitions.pb.go" />
     <entry file="file://$PROJECT_DIR$/protoc.sh" />
-    <entry file="file://$PROJECT_DIR$/proto/MicroVision-proto/mvcamctrl/laser_control_definitions.proto">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="17" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/proto/MicroVision-proto/mvcamctrl/laser_control_service.proto">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="39" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../mvprotos/mvcam/camera_service.pb.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1035">
-          <caret line="69" column="5" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
-          <folding>
-            <element signature="e#97#272#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../mvprotos/mvcamctrl/laser_control_definitions.pb.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/proto/MicroVision-proto/mvcamctrl/laser_control_definitions.proto" />
+    <entry file="file://$PROJECT_DIR$/proto/MicroVision-proto/mvcamctrl/laser_control_service.proto" />
+    <entry file="file://$PROJECT_DIR$/../mvprotos/mvcamctrl/laser_control_definitions.pb.go" />
     <entry file="file://$PROJECT_DIR$/../mvprotos/mvcamctrl/camera_controller_definitions.pb.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2610">
@@ -573,36 +563,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../../../google.golang.org/grpc/server.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="965" selection-start-line="965" selection-end-line="965" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/connect_devices.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="58" selection-start-line="58" selection-end-line="58" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/server/connect_devices.go" />
     <entry file="file://$PROJECT_DIR$/../mvprotos/mvcgi/cgi_definitions.pb.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="149" column="4" selection-start-line="149" selection-start-column="4" selection-end-line="149" selection-end-column="4" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/proto/MicroVision-proto/mvcgi/cgi_definitions.proto">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="87" column="13" selection-start-line="87" selection-start-column="13" selection-end-line="87" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/proto/MicroVision-proto/protoc.sh">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/../../../google.golang.org/grpc/clientconn.go">
       <provider selected="true" editor-type-id="text-editor">
@@ -611,37 +578,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="13" column="32" selection-start-line="13" selection-start-column="32" selection-end-line="13" selection-end-column="32" />
-          <folding>
-            <element signature="e#14#275#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/go-1.11/src/runtime/sys_linux_amd64.s">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="531" selection-start-line="531" selection-end-line="531" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/server.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/go-1.11/src/testing/testing.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="829" selection-start-line="829" selection-end-line="829" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file:///usr/lib/go-1.11/src/runtime/sys_linux_amd64.s" />
+    <entry file="file:///usr/lib/go-1.11/src/testing/testing.go" />
     <entry file="file://$PROJECT_DIR$/server/backend_server_interface.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="347">
@@ -666,52 +604,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/lib/go-1.11/src/sync/waitgroup.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="99" selection-start-line="99" selection-end-line="99" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/go-1.11/src/runtime/asm_amd64.s">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="521" selection-start-line="521" selection-end-line="521" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/proto/MicroVision-proto/mvcgi/cgi_service.proto">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="80" selection-start-line="13" selection-start-column="57" selection-end-line="13" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/util_test.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="62" column="35" selection-start-line="62" selection-start-column="35" selection-end-line="62" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file:///usr/lib/go-1.11/src/sync/waitgroup.go" />
+    <entry file="file:///usr/lib/go-1.11/src/runtime/asm_amd64.s" />
     <entry file="file://$PROJECT_DIR$/server/backend_server_interface_grpc_test.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="173">
           <caret line="195" selection-start-line="195" selection-end-line="195" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/proto/MicroVision-proto/mvcam/camera_definitions.proto">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="63" column="26" selection-start-line="63" selection-start-column="26" selection-end-line="63" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/proto/MicroVision-proto/mvcam/camera_service.proto">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="16" column="37" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -722,13 +620,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/lib/go-1.11/src/runtime/panic.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="680" selection-start-line="680" selection-end-line="680" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file:///usr/lib/go-1.11/src/runtime/panic.go" />
     <entry file="file://$PROJECT_DIR$/server/list_devices.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -746,13 +638,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/proto/MicroVision-proto/mvcamctrl/camera_controller_definitions.proto">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="22" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/control_devices.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="70">
@@ -763,29 +648,171 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/server/list_devices_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="9" selection-start-line="9" selection-end-line="16" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/control_device_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/proto/MicroVision-proto/protoc.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/proto/MicroVision-proto/mvcam/camera_definitions.proto">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="1" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/proto/MicroVision-proto/mvcamctrl/camera_controller_definitions.proto">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="23" column="9" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/util_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../../../google.golang.org/grpc/server.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="682" selection-start-line="682" selection-end-line="682" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/proto/MicroVision-proto/mvcgi/cgi_definitions.proto">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="38" column="64" selection-start-line="38" selection-start-column="60" selection-end-line="38" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/server/cgi_impl.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="160" selection-start-line="160" selection-end-line="160" />
+        <state relative-caret-position="197">
+          <caret line="122" column="28" selection-start-line="122" selection-start-column="28" selection-end-line="122" selection-end-column="28" />
           <folding>
             <element signature="n#!!block;n#BackendServerInterface#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/list_devices_test.go">
+    <entry file="file://$PROJECT_DIR$/proto/MicroVision-proto/mvcam/camera_service.proto">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="16" selection-end-column="5" />
+        <state relative-caret-position="211">
+          <caret line="16" column="37" selection-start-line="16" selection-start-column="20" selection-end-line="16" selection-end-column="37" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/control_device_test.go">
+    <entry file="file://$PROJECT_DIR$/proto/MicroVision-proto/mvcgi/cgi_service.proto">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="19" lean-forward="true" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
+        <state relative-caret-position="102">
+          <caret line="6" selection-start-line="6" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/proto/MicroVision-proto/mvcgi/device_pair_service.proto">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="36" selection-start-line="36" selection-end-line="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/proto/MicroVision-proto/mvcgi/device_discovery_service.proto">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="1" selection-start-line="20" selection-start-column="1" selection-end-line="20" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../mvprotos/mvcam/camera_service.pb.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="68" column="5" selection-start-line="68" selection-start-column="5" selection-end-line="68" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
           <folding>
-            <element signature="e#16#78#0" expanded="true" />
+            <element signature="e#14#275#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/backend_connection.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="42" selection-start-line="5" selection-start-column="42" selection-end-line="5" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/server.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="17" selection-start-line="17" selection-end-line="27" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/devicepair/device_service_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="16" column="34" selection-start-line="16" selection-end-line="17" />
+          <folding>
+            <element signature="e#29#279#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/devicepair/device_service.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-170">
+          <caret line="25" column="4" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/devicediscovery/device_discovery.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="28" column="51" lean-forward="true" selection-start-line="28" selection-start-column="51" selection-end-line="28" selection-end-column="51" />
+          <folding>
+            <element signature="e#34#96#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/devicediscovery/device_discovery_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="64" column="28" selection-start-line="64" selection-start-column="28" selection-end-line="64" selection-end-column="28" />
+          <folding>
+            <element signature="e#30#353#0" expanded="true" />
           </folding>
         </state>
       </provider>
