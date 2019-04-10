@@ -31,14 +31,18 @@ func NewDeviceConnectionServiceImpl(
 }
 
 func (s *DeviceConnectionServiceImpl) Connect(ctx context.Context, req *mvcgi.ConnectionRequest) (resp *empty.Empty, err error) {
+	resp = &empty.Empty{}
 	wg := sync.WaitGroup{}
 	e := &multierror.Error{}
 	if req.CameraId != "" {
 		wg.Add(1)
 		go func() {
+			defer wg.Done()
+
 			_, err := s.cameraServer.OpenCamera(ctx, &mvcam.IdRequest{Id: req.CameraId}, grpc.WaitForReady(true))
 			if err != nil {
 				e = multierror.Append(e, err)
+				return
 			}
 			// update cache
 			for k, v := range s.cache.DiscoveredCamera {
@@ -46,12 +50,13 @@ func (s *DeviceConnectionServiceImpl) Connect(ctx context.Context, req *mvcgi.Co
 					s.cache.DiscoveredCamera[k].Connected = true
 				}
 			}
-			wg.Done()
 		}()
 	}
 	if req.ControllerId != "" {
 		wg.Add(1)
 		go func() {
+			defer wg.Done()
+
 			_, err = s.controllerServer.Connect(
 				ctx,
 				&mvcamctrl.ConnectRequest{
@@ -63,6 +68,7 @@ func (s *DeviceConnectionServiceImpl) Connect(ctx context.Context, req *mvcgi.Co
 			)
 			if err != nil {
 				e = multierror.Append(e, err)
+				return
 			}
 
 			// update cache
@@ -71,23 +77,25 @@ func (s *DeviceConnectionServiceImpl) Connect(ctx context.Context, req *mvcgi.Co
 					s.cache.DiscoveredController[k].Connected = true
 				}
 			}
-			wg.Done()
 		}()
 	}
 
 	wg.Wait()
-	if e != nil {
+	if e.ErrorOrNil() != nil {
 		err = e
 	}
 	return
 }
 
 func (s *DeviceConnectionServiceImpl) Disconnect(ctx context.Context, req *mvcgi.ConnectionRequest) (resp *empty.Empty, err error) {
+	resp = &empty.Empty{}
 	wg := sync.WaitGroup{}
 	e := &multierror.Error{}
 	if req.CameraId != "" {
 		wg.Add(1)
 		go func() {
+			defer wg.Done()
+
 			_, err := s.cameraServer.ShutdownCamera(ctx, &mvcam.IdRequest{Id: req.CameraId}, grpc.WaitForReady(true))
 			if err != nil {
 				e = multierror.Append(e, err)
@@ -98,12 +106,13 @@ func (s *DeviceConnectionServiceImpl) Disconnect(ctx context.Context, req *mvcgi
 					s.cache.DiscoveredCamera[k].Connected = false
 				}
 			}
-			wg.Done()
 		}()
 	}
 	if req.ControllerId != "" {
 		wg.Add(1)
 		go func() {
+			defer wg.Done()
+
 			_, err = s.controllerServer.Disconnect(
 				ctx,
 				&mvcamctrl.ConnectRequest{
@@ -122,17 +131,17 @@ func (s *DeviceConnectionServiceImpl) Disconnect(ctx context.Context, req *mvcgi
 					s.cache.DiscoveredController[k].Connected = false
 				}
 			}
-			wg.Done()
 		}()
 	}
 
 	wg.Wait()
-	if e != nil {
+	if e.ErrorOrNil() != nil {
 		err = e
 	}
 	return
 }
 
 func (s *DeviceConnectionServiceImpl) DisconnectAll(ctx context.Context, req *mvcgi.DisconnectAllRequest) (resp *empty.Empty, err error) {
-	return nil, status.Error(codes.Unimplemented, "DisconnectAll not implemented")
+	resp = &empty.Empty{}
+	return resp, status.Error(codes.Unimplemented, "DisconnectAll not implemented")
 }
